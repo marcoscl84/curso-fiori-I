@@ -11,8 +11,8 @@
     "description": "{{appDescription}}",
     "resources": "resources.json",
     "sourceTemplate": {
-      "id": "@sap/generator-fiori:basic",
-      "version": "1.10.2",
+      "id": "@sap/generator-fiori:listdetail",
+      "version": "1.71.27",
       "toolsId": "5117d654-fe05-4da4-94cb-59b390ba276d"
     },
     "dataSources": {
@@ -107,8 +107,8 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewLevel": 1,
-          "viewId": "list",
-          "viewName": "List"
+          "viewId": "List",
+          "viewName": "list"
         }
       }
     },
@@ -116,7 +116,7 @@
       "viewName": "com.prestativ.slc.followup.view.App",
       "type": "XML",
       "async": true,
-      "id": "App"
+      "id": "app"
     }
   }
 }

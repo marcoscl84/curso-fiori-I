@@ -1,4 +1,5 @@
-<mvc:View xmlns:f="sap.f"
+<mvc:View 
+    xmlns:f="sap.f"
 	controllerName="com.prestativ.slc.followup.controller.List"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
@@ -17,13 +18,15 @@
     >
         <f:title>
             <f:DynamicPageTitle id="dynamicPageTitle">
-                <sv:SmartVariantManagement 
-                    id="_SVM01"
-                    persistencyKey="smartPersKeyVariant"
-                    showShare="true"
-                    showExecuteOnSelection="true"
-                    entitySet="ZMM_RFQ_FOLLOWUP"
-                />
+                <f:content>
+                    <sv:SmartVariantManagement 
+                        id="__SVM01"
+                        persistencyKey="smartPersKeyVariant"
+                        showShare="true"
+                        showExecuteOnSelection="true"
+                        entitySet="ZMM_RFQ_FOLLOWUP"
+                    />
+                </f:content>
             </f:DynamicPageTitle>
         </f:title>
 
@@ -32,7 +35,16 @@
                 id="dynamicPageHeader"              
             >
                <f:content>
-                
+                    <smartfilterbar:SmartFilterBar 
+                        id="smartfilterbar"
+                        smartVariant="__SVM01"
+                        persistencyKey="smartPersKeyFilter"
+                        showFilterConfiguration="true"
+                        useToolbar="true"
+                        entitySet="ZMM_RFQ_FOLLOWUP"
+                    >
+                    
+                    </smartfilterbar:SmartFilterBar>
                </f:content>
             </f:DynamicPageHeader>
         </f:header>
