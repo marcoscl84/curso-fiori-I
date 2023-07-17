@@ -20,7 +20,7 @@ sap.ui.define([
                 oViewModel = new JSONModel({
                     busy: true,
                     delay: 0,
-                    layout: "oneColumn",
+                    layout: "OneColumn",
                     previousLayout: "",
                     actionButtonsInfo: {
                         midolumn: {
@@ -36,7 +36,7 @@ sap.ui.define([
                     oViewModel.setProperty("/delay", iOriginalBusyDelay)
                 }
 
-                this.getOwnerComponent().getModel().getMetadataLoaded().then(fnSetAppNotBusy);
+                this.getOwnerComponent().getModel().metadataLoaded().then(fnSetAppNotBusy);
                 this.getOwnerComponent().getModel().attachMetadataFailed(fnSetAppNotBusy);
 
                 // this.getView().addStyleClass(this.getOwnerComponent().getComponentDestinyClass())
