@@ -36,18 +36,198 @@
             >
                <f:content>
                     <smartfilterbar:SmartFilterBar 
-                        id="smartfilterbar"
+                        id="idSmartfilterbar"
                         smartVariant="__SVM01"
                         persistencyKey="smartPersKeyFilter"
                         showFilterConfiguration="true"
                         useToolbar="true"
                         entitySet="ZMM_RFQ_FOLLOWUP"
                     >
-                    
+                        <smartfilterbar:controlConfiguration>
+                            <smartfilterbar:ControlConfiguration 
+                                key="DocumentNumber"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="true"
+                            />
+
+                            <smartfilterbar:ControlConfiguration
+                                key="BusinessPartner"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="PartnerName"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="lifnt_Text"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="lifnt"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="UniqueID"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="EmailAddress"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="Language"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="CreatedBy"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="ContactPerson"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="PurchaseOrderCategory"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="To_QuoHeader.QUOPurchaseOrderCategory"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="to_QuoHeader.QUOContactPerson"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="to_QuoHeader.QUOLanguage"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="to_PurchaseOrderCategory.DomainValue"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="to_PurchaseOrderCategory.DomainValue"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="to_Partner.lifnr"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+
+                            <smartfilterbar:ControlConfiguration 
+                                key="to_Partner.lifnr_Text"
+                                visibleInAdvancedArea="true"
+                                preventInitialDataFetchInValueHelpDialog="false"
+                                visible="false"
+                            />
+                        </smartfilterbar:controlConfiguration>
                     </smartfilterbar:SmartFilterBar>
                </f:content>
             </f:DynamicPageHeader>
         </f:header>
+
+        <f:content>
+            <smarttable:SmartTable 
+                id="idSmatTable"
+                requestAtLeastFields="UniqueID"
+                header="{i18n>listViewSmartTableHeaderTitle}"
+                persistencyKey="smartPersKeyTab"
+                smartVariant="__SVM01"
+                showVariantManagement="true"
+                showTablePersonalisation="true"
+                showFullScreenButton="true"
+                entitySet="ZMM_RFQ_FOLLOWUP"
+                smartFilterId="idSmartfilterbar"
+                tableType="ResponsiveTable"
+                enableAutoBinding="true"
+                beforeRebindTable="onBeforeRebindTableFollowup"
+                initiallyVisibleFields="DocumentNumber,BusinessPartner,PartnerName"
+            >
+                <Table>
+                    <columns>
+                        <Column>
+                            <customData>
+                                <core:CustomData
+                                    key="p13nData"
+                                    value='\{"columnKey": "Status", "columnIndex": "0", "leadingProperty": "Status", "sortProperty": "Status", "displayBehaviour": "descriptionOnly"}'
+                                />
+                            </customData>
+                            <Label text="{i18n>listViewSmartTableLabelStatus}"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <ObjectStatus
+                                    text="{
+                                        path: 'Status', 
+                                        formatter: '.formatter.statusText'
+                                    }"
+                                    state="{
+                                        path: 'Status', 
+                                        formatter: '.formatter.statusState'
+                                    }"
+                                    icon="{
+                                        path: 'Status', 
+                                        formatter: '.formatter.statusIcon'
+                                    }"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smarttable:SmartTable>
+        </f:content>
 
     </f:DynamicPage>
 </mvc:View>

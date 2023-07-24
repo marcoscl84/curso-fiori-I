@@ -18,7 +18,7 @@ sap.ui.define([
                     iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
 
                 oViewModel = new JSONModel({
-                    busy: true,
+                    busy: false,
                     delay: 0,
                     layout: "OneColumn",
                     previousLayout: "",
